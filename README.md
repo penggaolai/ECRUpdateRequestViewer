@@ -1,2 +1,2 @@
 # ECRUpdateRequestViewer
-a simple node js web app using MongoDB
+a simple nodejs web app using MongoDB
