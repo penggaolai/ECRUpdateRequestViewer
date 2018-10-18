@@ -1,0 +1,35 @@
+<% include templates/header.ejs%>
+    <h1>Business Types</h1>
+    <form method="post" action="/RabbitMQRoutingKeyViewer">
+        <select name="businesstypes" id="businesstypes">
+            <%if( businesstypes !='') { %>
+                <%businesstypes.forEach(function(businesstype){%>
+                    <%if (businesstype.type==selectedtype) {%>
+                        <option selected><%=businesstype.type%></option>
+                    <%} else { %>
+                        <option><%=businesstype.type%></option>
+                    <%}%>
+                <%})%>
+            <%}%>
+        </select>
+        <input type="submit" class="getSamples" value="Get Samples">
+
+    </form>
+    <%if( businesstypes !='') { %>
+        <%businesstypes.forEach(function(businesstype){%>
+            <%if (businesstype.type==selectedtype) {%>
+                <p>Templates:</p>
+                <%businesstype.routing_key_structure.forEach(function(item){%>
+                    <p> <%=item%></p>
+                <%})%>
+            <%}%>
+        <%})%>
+    <%}%>
+
+    <%if( routingkeys !='') { %>
+        <p>Samples:</p>
+        <%routingkeys.forEach(function(key){%>
+            <p><%=key%></p><br/>
+        <%})%>
+    <%}%>
+<% include templates/footer.ejs%>
